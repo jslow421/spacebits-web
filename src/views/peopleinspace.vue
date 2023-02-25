@@ -34,9 +34,6 @@ async function retrievePeople() {
         })
         .then((resp) => {
             peopleModel.value = resp.data;
-            peopleModel.value.people?.forEach((person) => {
-                peeps.value.push(person);
-            });
         });
 }
 
