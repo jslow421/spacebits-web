@@ -2,7 +2,7 @@
     <div>
         <p>People In Space</p>
         <p>Updated: {{ peopleModel.updatedTime }}</p>
-        <ul>
+        <ul class="people-list">
             <li v-for="person in peopleModel.people" :key="person.name">
                 <p>{{ person.name }}</p>
                 <p>{{ person.craft }}</p>
@@ -14,9 +14,9 @@
 <script setup lang="ts">
 import axios from "axios";
 import { onMounted, onUpdated, ref, Ref } from "vue";
-import { PeopleInSpaceModel, PersonInSpace } from "../models/peopleModel";
+import { PeopleInSpaceModel } from "../models/peopleModel";
+import { Configuration } from "../.configuration";
 
-const peeps: Ref<PersonInSpace[]> = ref([]);
 const peopleModel: Ref<PeopleInSpaceModel> = ref({
     message: "",
     number: 0,
@@ -26,10 +26,10 @@ const peopleModel: Ref<PeopleInSpaceModel> = ref({
 
 async function retrievePeople() {
     axios
-        .get("https://api.spacebits.net/people", {
+        .get(Configuration.PEOPLE_IN_SPACE_URL, {
             headers: {
                 "content-type": "application/json",
-                "x-api-key": "",
+                "x-api-key": Configuration.API_KEY,
             },
         })
         .then((resp) => {
@@ -41,9 +41,11 @@ onMounted(async () => {
     await retrievePeople();
 });
 
-onUpdated(() => {
-    console.log("updated");
-});
+onUpdated(() => {});
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.people-list {
+    list-style: none;
+}
+</style>
