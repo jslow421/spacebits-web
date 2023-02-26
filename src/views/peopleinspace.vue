@@ -2,12 +2,19 @@
 	<div>
 		<p>People In Space</p>
 		<p>Updated: {{ peopleModel.updatedTime }}</p>
-		<ul class="people-list">
-			<li v-for="person in peopleModel.people" :key="person.name">
-				<p>{{ person.name }}</p>
+		<div
+			v-for="person in peopleModel.people"
+			:key="person.name"
+			class="bg-accent-100 card-compact card w-96 shadow-xl"
+		>
+			<div class="card-body">
+				<h2 class="card-title">{{ person.name }}</h2>
 				<p>{{ person.craft }}</p>
-			</li>
-		</ul>
+				<div class="card-actions justify-end">
+					<button class="btn-primary btn">Details</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
