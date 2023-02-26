@@ -1,9 +1,9 @@
 export class PeopleInSpaceModel {
-    updatedTime: string | undefined;
-    people: PersonInSpace[] | undefined;
+	updatedTime: string | undefined;
+	people: PersonInSpace[] | undefined;
 }
 
 export class PersonInSpace {
-    name: string | undefined;
-    craft: string | undefined;
+	name: string | undefined;
+	craft: string | undefined;
 }

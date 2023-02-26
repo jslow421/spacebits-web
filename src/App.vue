@@ -3,11 +3,11 @@ import { onMounted } from "vue";
 import Navbar from "./components/navbar.vue";
 
 onMounted(() => {
-    console.log("App Running...");
+	console.log("App Running...");
 });
 </script>
 
 <template>
-    <navbar />
-    <router-view />
+	<navbar />
+	<router-view />
 </template>
