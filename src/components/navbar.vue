@@ -1,5 +1,5 @@
 <template>
-	<div class="navbar bg-base-100">
+	<div class="container navbar mx-auto bg-base-100">
 		<div class="flex-1">
 			<a class="btn-ghost btn text-xl normal-case">SpaceBits</a>
 		</div>

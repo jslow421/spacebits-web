@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import axios from "axios";
-import { onMounted, onUpdated, ref, Ref } from "vue";
+import { onMounted, ref, Ref } from "vue";
 import { PeopleInSpaceModel } from "../models/peopleModel";
 import { Configuration } from "../.configuration";
 
