@@ -1,17 +1,21 @@
 <template>
-	<div>
+	<div class="container mx-auto">
 		<p>People In Space</p>
 		<p>Updated: {{ peopleModel.updatedTime }}</p>
-		<div
-			v-for="person in peopleModel.people"
-			:key="person.name"
-			class="bg-accent-100 card-compact card w-96 shadow-xl"
-		>
-			<div class="card-body">
-				<h2 class="card-title">{{ person.name }}</h2>
-				<p>{{ person.craft }}</p>
-				<div class="card-actions justify-end">
-					<button class="btn-primary btn">Details</button>
+		<button class="loading btn" v-if="isLoading">loading</button>
+		<div class="results grid grid-cols-2 gap-2">
+			<div
+				v-for="person in peopleModel.people"
+				:key="person.name"
+				class="card-compact card w-96 bg-gray-100 shadow-xl"
+				v-if="!isLoading"
+			>
+				<div class="card-body">
+					<h2 class="card-title">{{ person.name }}</h2>
+					<p>{{ person.craft }}</p>
+					<div class="card-actions justify-end">
+						<button class="btn-primary btn">Details</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -24,12 +28,13 @@ import { onMounted, onUpdated, ref, Ref } from "vue";
 import { PeopleInSpaceModel } from "../models/peopleModel";
 import { Configuration } from "../.configuration";
 
-const peopleModel: Ref<PeopleInSpaceModel> = ref({
+const isLoading = ref(false);
+const peopleModel = ref({
 	message: "",
 	number: 0,
 	people: [],
 	updatedTime: "",
-});
+}) as Ref<PeopleInSpaceModel>;
 
 async function retrievePeople() {
 	axios
@@ -45,14 +50,16 @@ async function retrievePeople() {
 }
 
 onMounted(async () => {
-	await retrievePeople();
+	isLoading.value = true;
+
+	try {
+		await retrievePeople();
+	} catch (e) {
+		console.warn(e);
+	} finally {
+		isLoading.value = false;
+	}
 });
 
 onUpdated(() => {});
 </script>
-
-<style scoped lang="scss">
-.people-list {
-	list-style: none;
-}
-</style>
