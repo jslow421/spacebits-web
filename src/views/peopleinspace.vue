@@ -2,13 +2,13 @@
 	<div class="container mx-auto">
 		<p>People In Space</p>
 		<p>Updated: {{ peopleModel.updatedTime }}</p>
-		<button class="loading btn" v-if="isLoading">loading</button>
+		<button class="loading btn" v-bind:class="{ hidden: !isLoading }">loading</button>
 		<div class="results grid grid-cols-2 gap-2">
 			<div
 				v-for="person in peopleModel.people"
 				:key="person.name"
 				class="card-compact card w-96 bg-gray-100 shadow-xl"
-				v-if="!isLoading"
+				v-bind:class="{ hidden: isLoading }"
 			>
 				<div class="card-body">
 					<h2 class="card-title">{{ person.name }}</h2>
@@ -60,6 +60,4 @@ onMounted(async () => {
 		isLoading.value = false;
 	}
 });
-
-onUpdated(() => {});
 </script>
