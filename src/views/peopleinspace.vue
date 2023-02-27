@@ -7,14 +7,14 @@
 			<div
 				v-for="person in peopleModel.people"
 				:key="person.name"
-				class="card-compact card w-96 bg-gray-100 shadow-xl"
+				class="card card-compact w-96 bg-gray-100 shadow-xl"
 				v-bind:class="{ hidden: isLoading }"
 			>
 				<div class="card-body">
 					<h2 class="card-title">{{ person.name }}</h2>
 					<p>{{ person.craft }}</p>
 					<div class="card-actions justify-end">
-						<button class="btn-primary btn">Details</button>
+						<button class="btn-primary btn">Detailss</button>
 					</div>
 				</div>
 			</div>
