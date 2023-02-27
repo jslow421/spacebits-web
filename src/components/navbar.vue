@@ -12,14 +12,4 @@
 	</div>
 </template>
 
-<script lang="ts">
-export default {
-	name: "navbar",
-};
-</script>
-
-<style scoped lang="scss">
-.title {
-	color: red;
-}
-</style>
+<script lang="ts"></script>
