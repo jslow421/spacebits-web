@@ -7,9 +7,10 @@
 			<ul class="menu menu-horizontal px-1">
 				<li><router-link to="/">Home</router-link></li>
 				<li><router-link to="/peopleinspace">People In Space</router-link></li>
+				<li><router-link to="/upcominglaunches">Upcoming Launches</router-link></li>
 			</ul>
 		</div>
 	</div>
 </template>
 
-<script lang="ts"></script>
+<script setup lang="ts"></script>

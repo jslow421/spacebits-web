@@ -1,7 +1,7 @@
 <template>
 	<div class="container mx-auto">
 		<p>People In Space</p>
-		<p>Updated: {{ peopleModel.updatedTime }}</p>
+		<p>Updated: {{ peopleModel.update_date }}</p>
 		<button class="loading btn" v-bind:class="{ hidden: !isLoading }">loading</button>
 		<div class="results grid grid-cols-2 gap-2">
 			<div
@@ -11,8 +11,8 @@
 				v-bind:class="{ hidden: isLoading }"
 			>
 				<div class="card-body">
-					<h2 class="card-title">{{ person.name }}</h2>
-					<p>{{ person.craft }}</p>
+					<h2 class="card-title text-black">{{ person.name }}</h2>
+					<p class="text-black">{{ person.craft }}</p>
 					<div class="card-actions justify-end">
 						<button class="btn-primary btn">Search</button>
 					</div>
@@ -33,7 +33,7 @@ const peopleModel = ref({
 	message: "",
 	number: 0,
 	people: [],
-	updatedTime: "",
+	update_date: "",
 }) as Ref<PeopleInSpaceModel>;
 
 async function retrievePeople() {
@@ -46,6 +46,7 @@ async function retrievePeople() {
 		})
 		.then((resp) => {
 			peopleModel.value = resp.data;
+			isLoading.value = false;
 		});
 }
 
@@ -56,7 +57,6 @@ onMounted(async () => {
 		await retrievePeople();
 	} catch (e) {
 		console.warn(e);
-	} finally {
 		isLoading.value = false;
 	}
 });

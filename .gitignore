@@ -88,3 +88,7 @@ typings/
 .dynamodb/
 
 src/.configuration.ts
+
+dist/
+
+.DS_Store

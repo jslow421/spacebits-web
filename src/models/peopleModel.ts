@@ -1,5 +1,5 @@
 export class PeopleInSpaceModel {
-	updatedTime: string | undefined;
+	update_date: string | undefined;
 	people: PersonInSpace[] | undefined;
 }
 
