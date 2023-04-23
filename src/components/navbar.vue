@@ -8,6 +8,7 @@
 				<li><router-link to="/">Home</router-link></li>
 				<li><router-link to="/peopleinspace">People In Space</router-link></li>
 				<li><router-link to="/upcominglaunches">Upcoming Launches</router-link></li>
+				<li><router-link to="/neo">NEO</router-link></li>
 			</ul>
 		</div>
 	</div>
