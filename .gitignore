@@ -87,8 +87,6 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-src/.configuration.ts
-
 dist/
 
 .DS_Store
