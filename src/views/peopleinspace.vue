@@ -3,11 +3,11 @@
 		<p>People In Space</p>
 		<p>Updated: {{ peopleModel.update_date }}</p>
 		<button class="loading btn" v-bind:class="{ hidden: !isLoading }">loading</button>
-		<div class="results grid grid-cols-2 gap-2">
+		<div class="results grid grid-cols-1 gap-2 md:grid-cols-2">
 			<div
 				v-for="person in peopleModel.people"
 				:key="person.name"
-				class="card card-compact w-96 bg-gray-100 shadow-xl"
+				class="card-compact card bg-gray-100 shadow-xl md:w-96"
 				v-bind:class="{ hidden: isLoading }"
 			>
 				<div class="card-body">
