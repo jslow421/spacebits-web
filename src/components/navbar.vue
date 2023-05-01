@@ -12,82 +12,83 @@
 			</ul>
 		</div>
 	</div> -->
-	<div class="navbar bg-base-100">
-		<div class="navbar-start">
-			<div class="dropdown">
-				<label tabindex="0" class="btn-ghost btn lg:hidden">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-5 w-5"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M4 6h16M4 12h8m-8 6h16"
-						/>
-					</svg>
-				</label>
-				<ul
-					tabindex="0"
-					class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+
+	<header class="bg-white">
+		<nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+			<a href="#" class="-m-1.5 p-1.5">
+				<span class="sr-only">Your Company</span>
+				<img class="h-8 w-auto" src="/apple-touch-icon.png" alt="" />
+			</a>
+			<div class="flex lg:hidden">
+				<button
+					type="button"
+					class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+					@click="mobileMenuOpen = true"
 				>
-					<li><router-link to="/">Home</router-link></li>
-					<li><router-link to="/peopleinspace">People In Space</router-link></li>
-					<li><router-link to="/upcominglaunches">Upcoming Launches</router-link></li>
-					<li><router-link to="/neo">NEO</router-link></li>
-					<!-- <li tabindex="0">
-						<a class="justify-between"
-							>Parent
-							<svg
-								class="fill-current"
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-							>
-								<path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-							</svg>
-						</a>
-						<ul class="p-2">
-							<li><a>Submenu 1</a></li>
-							<li><a>Submenu 2</a></li>
-						</ul>
-					</li> -->
-				</ul>
+					<span class="sr-only">Open main menu</span>
+					<Bars3Icon class="h-6 w-6" aria-hidden="true" />
+				</button>
 			</div>
-			<a class="btn-ghost btn text-xl normal-case">SpaceBits</a>
-		</div>
-		<div class="navbar-end hidden lg:flex">
-			<ul class="menu menu-horizontal px-1">
-				<li><router-link to="/">Home</router-link></li>
-				<li><router-link to="/peopleinspace">People In Space</router-link></li>
-				<li><router-link to="/upcominglaunches">Upcoming Launches</router-link></li>
-				<li><router-link to="/neo">NEO</router-link></li>
-				<!-- <li tabindex="0">
-					<a>
-						Parent
-						<svg
-							class="fill-current"
-							xmlns="http://www.w3.org/2000/svg"
-							width="20"
-							height="20"
-							viewBox="0 0 24 24"
-						>
-							<path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-						</svg>
+			<div class="hidden lg:flex lg:gap-x-12">
+				<div v-for="item in navigation" :key="item.name" class="text-sm font-semibold leading-6 text-gray-900">
+					<router-link :to="item.path">{{ item.name }}</router-link>
+				</div>
+				<!-- <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+					>Log in <span aria-hidden="true">&rarr;</span></a
+				> -->
+			</div>
+		</nav>
+		<Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+			<div class="fixed inset-0 z-10" />
+			<DialogPanel
+				class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+			>
+				<div class="flex items-center justify-between">
+					<a href="#" class="-m-1.5 p-1.5">
+						<span class="sr-only">Your Company</span>
+						<img class="h-8 w-auto" src="/apple-touch-icon.png" alt="" />
 					</a>
-					<ul class="p-2">
-						<li><a>Submenu 1</a></li>
-						<li><a>Submenu 2</a></li>
-					</ul>
-				</li> -->
-			</ul>
-		</div>
-	</div>
+					<button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
+						<span class="sr-only">Close menu</span>
+						<XMarkIcon class="h-6 w-6" aria-hidden="true" />
+					</button>
+				</div>
+				<div class="mt-6 flow-root">
+					<div class="-my-6 divide-y divide-gray-500/10">
+						<div class="space-y-2 py-6">
+							<div
+								v-for="item in navigation"
+								:key="item.name"
+								class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							>
+								<router-link :to="item.path">{{ item.name }}</router-link>
+							</div>
+						</div>
+						<!-- <div class="py-6">
+							<a
+								href="#"
+								class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+								>Log in</a
+							>
+						</div> -->
+					</div>
+				</div>
+			</DialogPanel>
+		</Dialog>
+	</header>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+import { Dialog, DialogPanel } from "@headlessui/vue";
+import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+
+const navigation = [
+	{ name: "Home", path: "/" },
+	{ name: "People In Space", path: "/peopleinspace" },
+	{ name: "Upcoming Lauches", path: "/upcominglaunches" },
+	{ name: "NEO", path: "/neo" },
+];
+
+const mobileMenuOpen = ref(false);
+</script>

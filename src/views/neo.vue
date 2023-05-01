@@ -1,5 +1,6 @@
 <template>
 	<div>Near Earth Objects</div>
+	<div>Coming soon!</div>
 </template>
 
 <script setup lang="ts">
