@@ -1,25 +1,52 @@
 <template>
-	<div class="container mx-auto">
-		<p>People In Space</p>
-		<p>Updated: {{ peopleModel.update_date }}</p>
-		<button class="loading btn" v-bind:class="{ hidden: !isLoading }">loading</button>
-		<div class="results grid grid-cols-1 gap-2 md:grid-cols-2">
-			<div
-				v-for="person in peopleModel.people"
-				:key="person.name"
-				class="card-compact card bg-gray-100 shadow-xl md:w-96"
-				v-bind:class="{ hidden: isLoading }"
-			>
-				<div class="card-body">
-					<h2 class="card-title text-black">{{ person.name }}</h2>
-					<p class="text-black">{{ person.craft }}</p>
-					<div class="card-actions justify-end">
-						<button class="btn-primary btn">Search</button>
+	<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:px-5">
+		<li
+			v-for="person in peopleModel.people"
+			:key="person.name"
+			class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
+		>
+			<div class="flex w-full items-center justify-between space-x-6 p-6">
+				<div class="flex-1 truncate">
+					<div class="flex items-center space-x-3">
+						<h3 class="truncate text-sm font-medium text-gray-900">{{ person.name }}</h3>
+						<span
+							class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
+							>{{ person.craft }}</span
+						>
+					</div>
+					<!-- <p class="mt-1 truncate text-sm text-gray-500">{{ person.title }}</p> -->
+				</div>
+				<img
+					class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
+					:src="person.imgUrl"
+					@error="handleImageError"
+					alt=""
+				/>
+			</div>
+			<!-- <div>
+				<div class="-mt-px flex divide-x divide-gray-200">
+					<div class="flex w-0 flex-1">
+						<a
+							:href="`mailto:${person.search_string}`"
+							class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+						>
+							<EnvelopeIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+							Search
+						</a>
+					</div>
+					<div class="-ml-px flex w-0 flex-1">
+						<a
+							:href="`tel:${person.telephone}`"
+							class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+						>
+							<PhoneIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+							NASA
+						</a>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
+			</div> -->
+		</li>
+	</ul>
 </template>
 
 <script setup lang="ts">
@@ -60,4 +87,9 @@ onMounted(async () => {
 		isLoading.value = false;
 	}
 });
+
+async function handleImageError(event: Event) {
+	const img = event.target as HTMLImageElement;
+	img.src = "/placeholder.jpg";
+}
 </script>

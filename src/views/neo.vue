@@ -1,6 +1,8 @@
 <template>
-	<div>Near Earth Objects</div>
-	<div>Coming soon!</div>
+	<div class="container mx-auto">
+		<div>Near Earth Objects</div>
+		<div>Coming soon!</div>
+	</div>
 </template>
 
 <script setup lang="ts">

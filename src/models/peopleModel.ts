@@ -6,4 +6,6 @@ export class PeopleInSpaceModel {
 export class PersonInSpace {
 	name: string | undefined;
 	craft: string | undefined;
+	imgUrl: string | undefined;
+	search_string: string | undefined;
 }
