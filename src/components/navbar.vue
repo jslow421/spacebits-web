@@ -1,5 +1,5 @@
 <template>
-	<header class="bg-base-200">
+	<header class="mb-2 bg-gray-dark">
 		<nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
 			<RouterLink to="/">
 				<div class="-m-1.5 p-1.5">
@@ -10,7 +10,7 @@
 			<div class="flex lg:hidden">
 				<button
 					type="button"
-					class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+					class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-green"
 					@click="mobileMenuOpen = true"
 				>
 					<span class="sr-only">Open main menu</span>
@@ -18,42 +18,44 @@
 				</button>
 			</div>
 			<div class="hidden lg:flex lg:gap-x-12">
-				<div
+				<router-link
 					v-for="item in navigation"
 					:key="item.name"
 					class="text-sm font-semibold leading-6 text-white"
 					@click="mobileMenuOpen = false"
+					:to="item.path"
 				>
-					<router-link :to="item.path">{{ item.name }}</router-link>
-				</div>
+					{{ item.name }}
+				</router-link>
 			</div>
 		</nav>
 		<Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
 			<div class="fixed inset-0 z-10" />
 			<DialogPanel
-				class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+				class="sm:ring-gray-900/10 fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1"
 			>
 				<div class="flex items-center justify-between">
 					<a href="#" class="-m-1.5 p-1.5">
 						<span class="sr-only">Your Company</span>
 						<img class="h-8 w-auto" src="/apple-touch-icon.png" alt="" />
 					</a>
-					<button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
+					<button type="button" class="text-gray-700 -m-2.5 rounded-md p-2.5" @click="mobileMenuOpen = false">
 						<span class="sr-only">Close menu</span>
 						<XMarkIcon class="h-6 w-6" aria-hidden="true" />
 					</button>
 				</div>
 				<div class="mt-6 flow-root">
-					<div class="-my-6 divide-y divide-gray-500/10">
+					<div class="divide-gray-500/10 -my-6 divide-y">
 						<div class="space-y-2 py-6">
-							<div
+							<router-link
 								v-for="item in navigation"
 								:key="item.name"
-								class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+								class="text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7 text-base"
 								@click="mobileMenuOpen = false"
+								:to="item.path"
 							>
-								<router-link :to="item.path">{{ item.name }}</router-link>
-							</div>
+								{{ item.name }}
+							</router-link>
 						</div>
 					</div>
 				</div>
