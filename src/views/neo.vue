@@ -16,13 +16,11 @@
 						<th scope="col" class="text-gray-900 py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-0">
 							Name
 						</th>
-						<th scope="col" class="text-gray-900 px-3 py-3.5 text-left text-sm font-semibold lg:table-cell">
-							ID
-						</th>
-						<th scope="col" class="text-gray-900 px-3 py-3.5 text-left text-sm font-semibold sm:table-cell">
+						<th scope="col" class="text-gray-900 px-3 py-3.5 text-sm font-semibold lg:table-cell">ID</th>
+						<th scope="col" class="text-gray-900 px-3 py-3.5 text-sm font-semibold sm:table-cell">
 							Potentially Hazardous?
 						</th>
-						<th scope="col" class="text-gray-900 px-3 py-3.5 text-left text-sm font-semibold">
+						<th scope="col" class="text-gray-900 px-3 py-3.5 text-sm font-semibold">
 							Min Est Diameter (Miles)
 						</th>
 					</tr>
@@ -49,11 +47,13 @@
 								</svg>
 							</a>
 						</td>
-						<td class="text-gray-500 px-3 py-4 text-sm lg:table-cell">{{ neo.id }}</td>
-						<td class="text-gray-500 px-3 py-4 text-sm sm:table-cell">
-							{{ neo.is_potentially_hazardous_asteroid }}
+						<td class="text-gray-500 px-3 py-4 text-center text-sm lg:table-cell">{{ neo.id }}</td>
+						<td class="text-gray-500 flex justify-center px-3 py-4 text-left text-sm">
+							<span v-if="neo.is_potentially_hazardous_asteroid" class="">
+								<CheckCircleIcon class="h-5 w-5 text-red" />
+							</span>
 						</td>
-						<td class="text-gray-500 px-3 py-4 text-sm">
+						<td class="text-gray-500 px-3 py-4 text-center text-sm">
 							{{ neo.estimated_diameter?.miles?.estimated_diameter_min }}
 						</td>
 					</tr>
@@ -69,6 +69,7 @@ import { onMounted, ref, Ref } from "vue";
 import { Configuration } from "../.configuration";
 import { NearEarthObjects } from "../models/neoModel";
 import spinner from "../components/spinner.vue";
+import { CheckCircleIcon } from "@heroicons/vue/24/solid";
 
 const isLoading = ref(false);
 const neoModel = ref({
