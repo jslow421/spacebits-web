@@ -6,10 +6,17 @@
 				<p class="text-gray-600 mt-6 text-lg leading-8">This is a work in progress. Soon to come features:</p>
 				<ul class="">
 					<li>Upcoming launches</li>
-					<li>Daily near earth objects</li>
 					<li>Photo of the day</li>
 					<li>And hopefully more!</li>
 				</ul>
+				<p class="text-gray-600 mt-6 text-lg leading-8">Features currently working:</p>
+				<ul class="">
+					<li>People in Space</li>
+					<li>Daily near earth objects</li>
+				</ul>
+				<p class="text-gray-600 mt-6 text-lg leading-8">
+					Note - "currently working" just means there's data. Layout and styling is still a work in progress.
+				</p>
 			</div>
 		</div>
 	</div>

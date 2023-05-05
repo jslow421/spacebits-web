@@ -3,16 +3,14 @@
 		<spinner />
 	</span>
 	<div class="container mx-auto bg-white px-4 sm:px-6 lg:px-8" v-bind:class="{ hidden: isLoading }">
-		<div class="sm:flex sm:items-center">
-			<div class="sm:flex-auto">
-				<h1 class="text-gray-900 font-semibold leading-6 text-base">
-					Today's {{ neoModel.data?.element_count }} Near Earth Objects
-				</h1>
-				<p class="text-gray-700 mt-2 text-sm">A list of Near Earth Objects for today.</p>
-			</div>
-		</div>
 		<div class="-mx-4 mt-8 sm:-mx-0">
 			<table class="divide-gray-300 min-w-full divide-y">
+				<caption>
+					{{
+						neoModel.data?.element_count
+					}}
+					Near Earth objects for today
+				</caption>
 				<thead>
 					<tr>
 						<th scope="col" class="text-gray-900 py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-0">
