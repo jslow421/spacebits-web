@@ -45,17 +45,19 @@ const peopleModel = ref({
 }) as Ref<PeopleInSpaceModel>;
 
 async function retrievePeople() {
-	axios
-		.get(Configuration.PEOPLE_IN_SPACE_URL, {
+	try {
+		const resp = await axios.get(Configuration.PEOPLE_IN_SPACE_URL, {
 			headers: {
 				"content-type": "application/json",
-				"x-api-key": Configuration.API_KEY,
 			},
-		})
-		.then((resp) => {
-			peopleModel.value = resp.data;
-			isLoading.value = false;
 		});
+
+		peopleModel.value = resp.data;
+		isLoading.value = false;
+	} catch (e) {
+		console.warn(e);
+		isLoading.value = false;
+	}
 }
 
 onMounted(async () => {

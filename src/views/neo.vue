@@ -78,17 +78,20 @@ const neoModel = ref({
 }) as Ref<NearEarthObjects>;
 
 async function retrieveNeo() {
-	axios
-		.get(Configuration.NEO_URL, {
+	try {
+		const resp = await axios.get(Configuration.NEO_URL, {
 			headers: {
 				"content-type": "application/json",
 				"x-api-key": Configuration.API_KEY,
 			},
-		})
-		.then((resp) => {
-			neoModel.value = resp.data;
-			isLoading.value = false;
 		});
+
+		neoModel.value = resp.data;
+		isLoading.value = false;
+	} catch (e) {
+		console.warn(e);
+		isLoading.value = false;
+	}
 }
 
 onMounted(async () => {
@@ -97,7 +100,7 @@ onMounted(async () => {
 	try {
 		await retrieveNeo();
 	} catch (e) {
-		console.warn(e);
+		console.error(e);
 		isLoading.value = false;
 	}
 });
