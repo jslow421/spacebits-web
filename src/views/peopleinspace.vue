@@ -62,13 +62,7 @@ async function retrievePeople() {
 
 onMounted(async () => {
 	isLoading.value = true;
-
-	try {
-		await retrievePeople();
-	} catch (e) {
-		console.warn(e);
-		isLoading.value = false;
-	}
+	await retrievePeople();
 });
 
 async function handleImageError(event: Event) {

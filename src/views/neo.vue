@@ -96,12 +96,6 @@ async function retrieveNeo() {
 
 onMounted(async () => {
 	isLoading.value = true;
-
-	try {
-		await retrieveNeo();
-	} catch (e) {
-		console.error(e);
-		isLoading.value = false;
-	}
+	await retrieveNeo();
 });
 </script>
