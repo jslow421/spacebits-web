@@ -9,7 +9,10 @@
 					{{
 						neoModel.data?.element_count
 					}}
-					Near Earth objects for today
+					Near Earth objects for today - Retrieved:
+					{{
+						neoModel.updated_date_time
+					}}
 				</caption>
 				<thead>
 					<tr>
