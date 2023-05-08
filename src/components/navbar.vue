@@ -68,13 +68,21 @@
 import { ref } from "vue";
 import { Dialog, DialogPanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { Features } from "../../features";
 
 const navigation = [
 	{ name: "Home", path: "/" },
 	{ name: "People In Space", path: "/peopleinspace" },
-	{ name: "Upcoming Launches", path: "/upcominglaunches" },
-	{ name: "NEO", path: "/neo" },
 ];
+
+// Feature flagged nav items
+if (Features.isEnabled(Features.features.upcomingLaunches)) {
+	navigation.push({ name: "Upcoming Launches", path: "/upcominglaunches" });
+}
+
+if (Features.isEnabled(Features.features.neo)) {
+	navigation.push({ name: "NEO", path: "/neo" });
+}
 
 const mobileMenuOpen = ref(false);
 </script>
