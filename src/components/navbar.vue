@@ -36,8 +36,8 @@
 			>
 				<div class="flex items-center justify-between">
 					<a href="#" class="-m-1.5 p-1.5">
-						<span class="sr-only">Your Company</span>
-						<img class="h-8 w-auto" src="/apple-touch-icon.png" alt="" />
+						<span class="sr-only">SpaceBits</span>
+						<img class="h-8 w-auto focus-visible:outline-none" src="/apple-touch-icon.png" alt="" />
 					</a>
 					<button type="button" class="text-gray-700 -m-2.5 rounded-md p-2.5" @click="mobileMenuOpen = false">
 						<span class="sr-only">Close menu</span>
@@ -76,11 +76,11 @@ const navigation = [
 ];
 
 // Feature flagged nav items
-if (Features.isEnabled(Features.features.upcomingLaunches)) {
+if (Features.isEnabled(Features.available.upcomingLaunches)) {
 	navigation.push({ name: "Upcoming Launches", path: "/upcominglaunches" });
 }
 
-if (Features.isEnabled(Features.features.neo)) {
+if (Features.isEnabled(Features.available.neo)) {
 	navigation.push({ name: "NEO", path: "/neo" });
 }
 

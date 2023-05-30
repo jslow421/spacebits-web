@@ -2,6 +2,10 @@
 	<span v-bind:class="{ hidden: !isLoading }">
 		<spinner />
 	</span>
+	<div class="container mx-auto">
+		Apologies, this information is a little out of date. My source appears to be lagging. I am working on another
+		solution.
+	</div>
 	<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:px-5">
 		<li
 			v-for="person in peopleModel.people"

@@ -2,7 +2,7 @@ export class Features {
 	static readonly isNeoEnabled = true;
 	static readonly isUpcomingLaunchesEnabled = false;
 
-	static readonly features = {
+	static readonly available = {
 		neo: "neo",
 		upcomingLaunches: "upcomingLaunches",
 	};
@@ -13,9 +13,9 @@ export class Features {
 		}
 
 		switch (feature) {
-			case this.features.neo:
+			case this.available.neo:
 				return Features.isNeoEnabled;
-			case this.features.upcomingLaunches:
+			case this.available.upcomingLaunches:
 				return Features.isUpcomingLaunchesEnabled;
 			default:
 				return false;

@@ -9,7 +9,7 @@
 					<li>Photo of the day</li>
 					<li>And hopefully more!</li>
 				</ul>
-				<p class="text-gray-600 mt-6 text-lg leading-8">Features currently working:</p>
+				<p class="text-gray-600 mt-6 text-lg leading-8">Working features:</p>
 				<ul class="">
 					<li>People in Space</li>
 					<li>Daily near earth objects</li>
