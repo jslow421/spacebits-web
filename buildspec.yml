@@ -6,7 +6,7 @@ phases:
       npm install -g pnpm
   install:
     runtime-versions:
-      nodejs: 16
+      nodejs: 18
     commands:
       - pnpm install
   build:
