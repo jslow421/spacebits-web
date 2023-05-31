@@ -8,9 +8,13 @@ export class Features {
 	};
 
 	static isEnabled(feature: string): boolean {
-		if (process.env.NODE_ENV === "development") {
+		let isInDev = import.meta.env.DEV;
+
+		if (isInDev) {
 			return true;
 		}
+
+		console.log(import.meta.env.DEV);
 
 		switch (feature) {
 			case this.available.neo:
