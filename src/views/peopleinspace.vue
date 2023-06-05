@@ -24,8 +24,7 @@
 				</div>
 				<img
 					class="bg-gray-300 h-10 w-10 flex-shrink-0 rounded-full"
-					:src="person.imgUrl"
-					@error="handleImageError"
+					:src="person.imgUrl ? person.imgUrl : '/placeholder.jpg'"
 					alt=""
 				/>
 			</div>
@@ -68,9 +67,4 @@ onMounted(async () => {
 	isLoading.value = true;
 	await retrievePeople();
 });
-
-async function handleImageError(event: Event) {
-	const img = event.target as HTMLImageElement;
-	img.src = "/placeholder.jpg";
-}
 </script>

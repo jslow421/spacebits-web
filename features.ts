@@ -14,8 +14,6 @@ export class Features {
 			return true;
 		}
 
-		console.log(import.meta.env.DEV);
-
 		switch (feature) {
 			case this.available.neo:
 				return Features.isNeoEnabled;
