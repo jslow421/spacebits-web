@@ -1,7 +1,11 @@
 <template>
-	<div class="container mx-auto">
-		<p>Upcoming launches</p>
-		<p>Coming soon!</p>
+	<span v-bind:class="{ hidden: !isLoading }">
+		<spinner />
+	</span>
+	<div class="container mx-auto" v-bind:class="{ hidden: isLoading }">
+		<div v-for="launch in launchesModel.launches?.result">
+			<span>{{ launch.launch_description }}</span>
+		</div>
 	</div>
 </template>
 
@@ -9,10 +13,11 @@
 import axios from "axios";
 import { onMounted, ref, Ref } from "vue";
 import { Configuration } from "../.configuration";
-import { UpcomingLaunchModel } from "../models/launchModel";
+import { UpcomingLaunches } from "../models/upcomingLaunchModel";
+import spinner from "../components/spinner.vue";
 
 const isLoading = ref(false);
-const launchesModel = ref({}) as Ref<UpcomingLaunchModel>;
+const launchesModel = ref({}) as Ref<UpcomingLaunches>;
 
 async function retrieveUpcomingLaunches() {
 	try {
@@ -22,9 +27,20 @@ async function retrieveUpcomingLaunches() {
 				"x-api-key": Configuration.API_KEY,
 			},
 		});
+
+		console.log(resp);
+		launchesModel.value = resp.data;
+		isLoading.value = false;
 	} catch (e) {
 		console.warn(e);
 		isLoading.value = false;
+	} finally {
+		isLoading.value = false;
 	}
 }
+
+onMounted(async () => {
+	isLoading.value = true;
+	await retrieveUpcomingLaunches();
+});
 </script>
