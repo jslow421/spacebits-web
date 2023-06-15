@@ -90,9 +90,9 @@ async function retrieveNeo() {
 		});
 
 		neoModel.value = resp.data;
-		isLoading.value = false;
 	} catch (e) {
 		console.warn(e);
+	} finally {
 		isLoading.value = false;
 	}
 }
