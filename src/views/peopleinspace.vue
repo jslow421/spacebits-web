@@ -24,7 +24,7 @@
 				</div>
 				<img
 					class="bg-gray-300 h-10 w-10 flex-shrink-0 rounded-full"
-					:src="person.imgUrl ? person.imgUrl : '/placeholder.jpg'"
+					:src="person.imgUrl ?? '/placeholder.jpg'"
 					alt=""
 				/>
 			</div>

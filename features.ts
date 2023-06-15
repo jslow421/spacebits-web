@@ -1,6 +1,6 @@
 export class Features {
 	static readonly isNeoEnabled = true;
-	static readonly isUpcomingLaunchesEnabled = false;
+	static readonly isUpcomingLaunchesEnabled = true;
 
 	static readonly available = {
 		neo: "neo",
