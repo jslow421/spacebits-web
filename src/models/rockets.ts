@@ -3,6 +3,9 @@ export enum RocketType {
 	Ariane5 = "Ariane 5",
 	Delta4Heavy = "Delta IV Heavy",
 	Soyuz2 = "Soyuz-2",
+	SpaceShipTwo = "SpaceShipTwo",
+	Alpha = "Alpha",
+	Miura1 = "Miura 1",
 	Generic = "Generic",
 }
 
@@ -20,6 +23,12 @@ export function getImageForType(rocket: RocketType): string {
 			return "/rockets/delta4heavy.jpg";
 		case RocketType.Soyuz2:
 			return "/rockets/soyuz2.jpg";
+		case RocketType.SpaceShipTwo:
+			return "/rockets/spaceshiptwo.jpg";
+		case RocketType.Alpha:
+			return "/rockets/alpha.png";
+		case RocketType.Miura1:
+			return "/rockets/miura1.jpg";
 		default:
 			return "/rockets/generic.jpg";
 	}
@@ -39,7 +48,13 @@ export function getRocketType(rocketName: string): RocketType {
 			return RocketType.Delta4Heavy;
 		case "Soyuz-2":
 			return RocketType.Soyuz2;
+		case "SpaceShipTwo":
+			return RocketType.SpaceShipTwo;
+		case "Alpha":
+			return RocketType.Alpha;
+		case "Miura 1":
+			return RocketType.Miura1;
 		default:
-			return RocketType.Falcon9;
+			return RocketType.Generic;
 	}
 }
