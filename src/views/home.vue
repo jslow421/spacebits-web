@@ -5,7 +5,6 @@
 				<h1 class="text-gray-900 text-4xl font-bold tracking-tight sm:text-6xl">SpaceBits</h1>
 				<p class="text-gray-600 mt-6 text-lg leading-8">This is a work in progress. Soon to come features:</p>
 				<ul class="">
-					<li>Upcoming launches</li>
 					<li>Photo of the day</li>
 					<li>And hopefully more!</li>
 				</ul>
@@ -13,6 +12,7 @@
 				<ul class="">
 					<li>People in Space</li>
 					<li>Daily near earth objects</li>
+					<li>Upcoming launches</li>
 				</ul>
 				<p class="text-gray-600 mt-6 text-lg leading-8">
 					Note - "currently working" just means there's data. Layout and styling is still a work in progress.
